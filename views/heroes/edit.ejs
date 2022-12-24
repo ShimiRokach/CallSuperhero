@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+</head>
+
+<body class="d-flex flex-column vh-100">
+
+    <%- include('../partials/navbar')%>
+
+        <div class="container mt-5">
+            <form action="/heroes/<%=existHero._id%>?_method=PUT" method="POST">
+                <div class="mb-3">
+                    <label for="InputForName" class="form-label">Hero Name</label>
+                    <input type="text" class="form-control" value="<%=existHero.name%>" id="InputForName"
+                        name="hero[name]">
+                </div>
+                <div class="mb-3">
+                    <label for="InputForLocation" class="form-label">Hero Location</label>
+                    <input type="text" class="form-control" value="<%=existHero.location%>" id="InputForLocation"
+                        name="hero[location]">
+                </div>
+                <div class="mb-3">
+                    <label for="InputForImage" class="form-label">Hero Picture</label>
+                    <input type="text" class="form-control" value="<%=existHero.image%>" id="InputForImage"
+                        name="hero[image]">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="Check" name="hero[turn]"
+                        <%=existHero.turn==='ON' ? 'Checked' : '' %>>
+                    <label class="form-check-label" for="Check">Can Turn Into Villain ?</label>
+                </div>
+                <select class="mb-3 form-select" required name="hero[specialty]">
+                    <% for(let specialty of specialties){ %>
+                        <option value="<%=specialty%>" <%=specialty===existHero.specialty ? 'selected' : '' %>>
+                            <%=specialty%>
+                        </option>
+                        <% } %>
+                </select>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <%- include('../partials/footer')%>
+
+            <!-- JavaScript Bundle with Popper -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+                crossorigin="anonymous"></script>
+
+</body>
+
+</html>
