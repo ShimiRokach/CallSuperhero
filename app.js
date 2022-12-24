@@ -55,7 +55,7 @@ const validateLogin = (req, res, next) => {
     res.render('users/login');
 }
 
-const specialties = ["STOP ALIEN'S INVASION", "FIGHT AGAINST TERRORISM", "FIGHT AGAINST DARK WIZARDS"];
+const specialties = ["STOP ALIEN'S INVASION", "FIGHT AGAINST TERRORISM", "FIGHT AGAINST DARK WIZARDS", "HEAL SICK PEOPLE"];
 
 app.get('/', validateLogin, (req, res) => {
     res.render('home');
